@@ -1,17 +1,19 @@
 [tool.poetry]
 name = "halp_me_sort"
-version = "0.1.0"
+version = "0.1.1"
 description = "Halp Me Sort is a simple and quite idiosyncratic CLI tool that sorts all files within a folder into folders based on file type."
 authors = ["Ingo Kleiber <ikleiber@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-black = "^23.9.1"
-isort = "^5.12.0"
 
 [tool.poetry.scripts]
 halp-me-sort = "halp_me_sort.cli:cli"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.9.1"
+isort = "^5.12.0"
 
 [tool.black]
 skip-string-normalization = true

@@ -1,5 +1,7 @@
 import sys
 
+import pkg_resources
+
 from halp_me_sort.config import config
 from halp_me_sort.halp import HalpSort
 
@@ -7,6 +9,7 @@ from halp_me_sort.halp import HalpSort
 def cli(config=config):
     args = sys.argv
     if len(args) < 2:
+        print(f'Halp Me Sort {pkg_resources.get_distribution("halp_me_sort").version}')
         print('Usage: halp_me_sort <folder_to_sort> <dry_run True/False>')
         sys.exit(1)
 

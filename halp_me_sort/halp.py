@@ -19,6 +19,7 @@ class HalpSort:
         self.folder_to_sort = Path(folder_to_sort)
 
         self.hashes = {}
+        self.duplicates = []
 
     def sort_files(self, dry_run=True):
         artifacts = list(self.folder_to_sort.glob('*'))
@@ -39,6 +40,7 @@ class HalpSort:
 
             for file in [f for f in files if f.suffix == filetype]:
                 hash = hash_file(file)
+
                 if hash not in self.hashes:
                     self.hashes[hash] = [file]
                     print(f'Moving {file} to {folder}')
@@ -52,12 +54,17 @@ class HalpSort:
                     if not dry_run:
                         shutil.move(file, Path(self.duplicate_folder, file.name))
 
-    def print_duplicates(self):
-        print('\nDuplicates')
-        duplicates = [
+        self.duplicates = [
             self.hashes[hash] for hash in self.hashes if len(self.hashes[hash]) > 1
         ]
-        for i, duplicate in enumerate(duplicates):
-            print(f' Duplicate {i}')
-            for file in duplicate:
-                print(f'  {file}')
+
+    def print_duplicates(self):
+        print('\nDuplicates')
+
+        if len(self.duplicates) == 0:
+            print('No duplicates found')
+        else:
+            for i, duplicate in enumerate(self.duplicates):
+                print(f' Duplicate {i}')
+                for file in duplicate:
+                    print(f'  {file}')

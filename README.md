@@ -28,6 +28,7 @@ This project uses `black` and `isort`. Run `poetry run black` and `poetry run is
 
 - Switch to `logging`
 - Switch to `argparse` or `Click`
+- Implement a function to detect already existing duplicates in the `sorted_folder`
 - Implement a function to sort folders
 - Add (sanity) checks
 - Add tests
