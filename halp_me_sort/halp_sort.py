@@ -1,11 +1,7 @@
-import hashlib
 import shutil
 from pathlib import Path
 
-
-def hash_file(file):
-    with open(file, 'rb') as f:
-        return hashlib.sha256(f.read()).hexdigest()
+from halp_me_sort.halpers import hash_file
 
 
 class HalpSort:

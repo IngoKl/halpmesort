@@ -16,9 +16,13 @@ Please note that this tool is *definitely not production ready* at all. I am sha
 
 ## Usage
 
-Once installed, you can run `halp-me-sort`. You will need to supply a folder to sort as well as, for security reasons, explicitly disable "dry mode": `halp-me-sort . False`
+Once installed, you can run `halp-me-sort`.
 
-This will move all files in `.` to subfolders in `sorted_folder` (`config.py`). For example, `./test.pdf` will be moved to `{sorted_folder}/pdf/test.pdf`.
+*Halp Me Sort* has two features:
+
+1. Sorting files according to their file extension. You will need to supply a folder to sort as well as, for security reasons, explicitly disable "dry mode": `halp-me-sort sort . False`. This will move all files in `.` to subfolders in `sorted_folder` (`config.py`). For example, `./test.pdf` will be moved to `{sorted_folder}/pdf/test.pdf`.
+2. Finding duplicates in a given folder. Run `halp-me-sort find-duplicates .` to move all duplicates in `.` to a duplicates folder.
+
 
 ## Development
 
@@ -26,9 +30,10 @@ This project uses `black` and `isort`. Run `poetry run black` and `poetry run is
 
 ### ToDo
 
-- Switch to `logging`
-- Switch to `argparse` or `Click`
-- Implement a function to detect already existing duplicates in the `sorted_folder`
-- Implement a function to sort folders
-- Add (sanity) checks
-- Add tests
+- [ ] Switch to `logging`
+- [ ] Implement a function to detect already existing duplicates in the `sorted_folder`
+- [ ] Implement a function to sort folders
+- [ ] Add (sanity) checks
+- [ ] Add tests
+- [X] Implement a function to find duplicates in a folder.
+- [X] Switch to `argparse` or `Click`
