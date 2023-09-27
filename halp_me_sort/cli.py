@@ -9,7 +9,9 @@ from halp_me_sort.halp_sort import HalpSort
 
 
 @click.group()
+@click.version_option()
 def cli():
+    click.echo(f'Halp Me Sort {pkg_resources.get_distribution("halp_me_sort").version}')
     pass
 
 
@@ -17,6 +19,7 @@ def cli():
 @click.argument('folder_to_sort', type=click.Path(exists=True))
 @click.argument('dry_run')
 def sort(folder_to_sort, dry_run):
+    """Sort the files in folder_to_sort according to file extension."""
     click.echo('Sorting the folder.')
     dry_run = True if dry_run == 'True' else False
 
@@ -30,6 +33,7 @@ def sort(folder_to_sort, dry_run):
 @click.command()
 @click.argument('folder_to_deduplicate', type=click.Path(exists=True))
 def find_duplicates(folder_to_deduplicate):
+    """Deduplicates files in folder_to_deduplicate."""
     click.echo('Finding duplicates in the folder.')
 
     halp = HalpDeduplicate(config=config, folder_to_deduplicate=folder_to_deduplicate)
