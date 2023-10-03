@@ -18,15 +18,21 @@ def cli():
 @click.command()
 @click.argument('folder_to_sort', type=click.Path(exists=True))
 @click.argument('dry_run')
-def sort(folder_to_sort, dry_run):
+@click.option('--sorted_folder', help='Folder to sort files into.')
+def sort(folder_to_sort, dry_run, sorted_folder):
     """Sort the files in folder_to_sort according to file extension."""
     click.echo('Sorting the folder.')
     dry_run = True if dry_run == 'True' else False
 
     click.echo(f'Sorting {folder_to_sort} (Dry Run: {dry_run})')
 
-    halp = HalpSort(config=config, folder_to_sort=folder_to_sort)
-    halp.sort_files(dry_run=dry_run)
+    halp = HalpSort(
+        config=config,
+        folder_to_sort=folder_to_sort,
+        sorted_folder=sorted_folder,
+        dry_run=dry_run,
+    )
+    halp.sort_files()
     halp.print_duplicates()
 
 

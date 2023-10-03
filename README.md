@@ -11,7 +11,7 @@ Please note that this tool is *definitely not production ready* at all. I am sha
 ## Installation
 
 1. Clone the repository `git clone https://github.com/IngoKl/halpmesort.git`
-1. Change the `config.py` or create a PR for some actual configuration management 😅. Currently, my local preference is the default for `sorted_folder`.
+1. Change the `config.py` or create a PR for some actual configuration management 😅. Currently, my local preferences are the default for `sorted_folder` as well as for the `excluded_filetypes`.
 1. Run `pip install .` within the folder. Alternatively, you can use `poetry`.
 
 ## Usage
@@ -23,17 +23,23 @@ Once installed, you can run `halp-me-sort`.
 1. Sorting files according to their file extension. You will need to supply a folder to sort as well as, for security reasons, explicitly disable "dry mode": `halp-me-sort sort . False`. This will move all files in `.` to subfolders in `sorted_folder` (`config.py`). For example, `./test.pdf` will be moved to `{sorted_folder}/pdf/test.pdf`.
 2. Finding duplicates in a given folder. Run `halp-me-sort find-duplicates .` to move all duplicates in `.` to a duplicates folder.
 
-
 ## Development
 
 This project uses `black` and `isort`. Run `poetry run black` and `poetry run isort` before committing.
 
 ### ToDo
 
+Currently, the most essential task is to implement better configuration management. This would include refactoring the existing code allowing users to change configuration options via CLI options.
+
 - [ ] Switch to `logging`
 - [ ] Implement a function to detect already existing duplicates in the `sorted_folder`
-- [ ] Implement a function to sort folders
+- [ ] Implement a function to sort/move folders
+- [ ] Implement a function to cleverly rename files (e.g., too long)
 - [ ] Add (sanity) checks
 - [ ] Add tests
+- [ ] Add sensible configuration management
+- [ ] Add CLI option to overwrite the configuration
+- [X] Add setting to exclude file types
+- [X] Add CLI option for custom {sorted_folder}
 - [X] Implement a function to find duplicates in a folder.
 - [X] Switch to `argparse` or `Click`

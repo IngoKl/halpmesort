@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "halp_me_sort"
-version = "0.1.2"
+version = "0.1.3"
 description = "Halp Me Sort is a simple and quite idiosyncratic CLI tool that sorts all files within a folder into folders based on file type."
 authors = ["Ingo Kleiber <ikleiber@gmail.com>"]
 readme = "README.md"

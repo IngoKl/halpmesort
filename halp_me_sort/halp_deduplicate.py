@@ -6,6 +6,8 @@ from halp_me_sort.halpers import hash_file
 
 class HalpDeduplicate:
     def __init__(self, config, folder_to_deduplicate):
+        self.config = config
+
         self.duplicate_folder = Path(folder_to_deduplicate, config['duplicate_folder'])
         self.duplicate_folder.mkdir(exist_ok=True)
 
