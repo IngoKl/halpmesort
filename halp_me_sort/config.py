@@ -10,5 +10,6 @@ config = {
         '.dbx-backup',
         '.dropbox',
         '.lock',
+        '.lnk',
     ],
 }

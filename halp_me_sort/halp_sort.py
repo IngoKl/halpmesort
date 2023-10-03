@@ -65,7 +65,10 @@ class HalpSort:
                     print(f'Moving {file} to {self.duplicate_folder}')
 
                     if not self.dry_run:
-                        shutil.move(file, Path(self.duplicate_folder, file.name))
+                        try:
+                            shutil.move(file, Path(self.duplicate_folder, file.name))
+                        except PermissionError:
+                            print(f'Could not move {file} due to a permission error.')
 
         self.duplicates = [
             self.hashes[hash] for hash in self.hashes if len(self.hashes[hash]) > 1
