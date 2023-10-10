@@ -1,5 +1,7 @@
 # Halp Me Sort, Pls
 
+![halp-me-sort-header](https://github.com/IngoKl/halpmesort/assets/16179317/6c584b2f-d106-43ee-b58e-19a1f47680c9)
+
 *Halp Me Sort* is a simple and quite idiosyncratic CLI tool that sorts all files within a folder into folders based on file type.
 
 Imagine that you have a folder called `sort` with hundreds of random files. To help you sort these files, *Halp Me Sort* will first put them into folders based on their file type (e.g., all PDFs go into a `pdf` folder). By default, this target folder will always be the same. Hence, if you have multiple `sort` folders, the tool helps you aggregate them in one place. While doing so, duplicates will also be sorted into their own folder.
