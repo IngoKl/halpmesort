@@ -161,3 +161,6 @@ cython_debug/
 
 # IMG
 img/
+
+# isort
+*.isorted

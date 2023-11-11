@@ -2,7 +2,7 @@
 
 ![halp-me-sort-header](https://github.com/IngoKl/halpmesort/assets/16179317/6c584b2f-d106-43ee-b58e-19a1f47680c9)
 
-*Halp Me Sort* is a simple and quite idiosyncratic CLI tool that sorts all files within a folder into folders based on file type.
+*Halp Me Sort* is a simple and quite idiosyncratic CLI tool that, first and foremost, sorts all files within a folder into folders based on file type.
 
 Imagine that you have a folder called `sort` with hundreds of random files. To help you sort these files, *Halp Me Sort* will first put them into folders based on their file type (e.g., all PDFs go into a `pdf` folder). By default, this target folder will always be the same. Hence, if you have multiple `sort` folders, the tool helps you aggregate them in one place. While doing so, duplicates will also be sorted into their own folder.
 
@@ -20,10 +20,11 @@ Please note that this tool is *definitely not production ready* at all. I am sha
 
 Once installed, you can run `halp-me-sort`.
 
-*Halp Me Sort* has two features:
+*Halp Me Sort* currently has three features:
 
 1. Sorting files according to their file extension. You will need to supply a folder to sort as well as, for security reasons, explicitly disable "dry mode": `halp-me-sort sort . False`. This will move all files in `.` to subfolders in `sorted_folder` (`config.py`). For example, `./test.pdf` will be moved to `{sorted_folder}/pdf/test.pdf`.
-2. Finding duplicates in a given folder. Run `halp-me-sort find-duplicates .` to move all duplicates in `.` to a duplicates folder.
+1. Finding duplicates in a given folder. Run `halp-me-sort find-duplicates .` to move all duplicates in `.` to a duplicates folder.
+1. Finding likely ebooks (based on the number of pages) and sorting them away. This can be used to approach a larger folder of PDFs. The tool also takes into account a naming convention for ebooks.
 
 ## Development
 
@@ -41,6 +42,7 @@ Currently, the most essential task is to implement better configuration manageme
 - [ ] Add tests
 - [ ] Add sensible configuration management
 - [ ] Add CLI option to overwrite the configuration
+- [X] Add tool to sort away likely ebooks (PDF)
 - [X] Add setting to exclude file types
 - [X] Add CLI option for custom {sorted_folder}
 - [X] Implement a function to find duplicates in a folder.
