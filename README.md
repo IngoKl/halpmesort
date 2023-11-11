@@ -24,7 +24,7 @@ Once installed, you can run `halp-me-sort`.
 
 1. Sorting files according to their file extension. You will need to supply a folder to sort as well as, for security reasons, explicitly disable "dry mode": `halp-me-sort sort . False`. This will move all files in `.` to subfolders in `sorted_folder` (`config.py`). For example, `./test.pdf` will be moved to `{sorted_folder}/pdf/test.pdf`.
 1. Finding duplicates in a given folder. Run `halp-me-sort find-duplicates .` to move all duplicates in `.` to a duplicates folder.
-1. Finding likely ebooks (based on the number of pages) and sorting them away. This can be used to approach a larger folder of PDFs. The tool also takes into account a naming convention for ebooks.
+1. Finding likely ebooks (based on the number of pages) and sorting them away. This can be used to approach a larger folder of PDFs. The tool also takes into account a naming convention for ebooks. Run `halp-me-sort sort-ebooks . False` to sort likely ebooks into separate folders based on their page count and the naming convention.
 
 ## Development
 
