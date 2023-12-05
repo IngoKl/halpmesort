@@ -25,10 +25,13 @@ Once installed, you can run `halp-me-sort`.
 1. Sorting files according to their file extension. You will need to supply a folder to sort as well as, for security reasons, explicitly disable "dry mode": `halp-me-sort sort . False`. This will move all files in `.` to subfolders in `sorted_folder` (`config.py`). For example, `./test.pdf` will be moved to `{sorted_folder}/pdf/test.pdf`.
 1. Finding duplicates in a given folder. Run `halp-me-sort find-duplicates .` to move all duplicates in `.` to a duplicates folder.
 1. Finding likely ebooks (based on the number of pages) and sorting them away. This can be used to approach a larger folder of PDFs. The tool also takes into account a naming convention for ebooks. Run `halp-me-sort sort-ebooks . False` to sort likely ebooks into separate folders based on their page count and the naming convention.
+1. Finding empty folders recursively. Run `halp-me-sort find-empty-folders .` to find all empty folders in `.`.
 
 ## Development
 
 This project uses `black` and `isort`. Run `poetry run black` and `poetry run isort` before committing.
+
+To run the CLI during development, you can run `poetry run halp-me-sort`.
 
 ### ToDo
 
@@ -42,6 +45,7 @@ Currently, the most essential task is to implement better configuration manageme
 - [ ] Add tests
 - [ ] Add sensible configuration management
 - [ ] Add CLI option to overwrite the configuration
+- [X] Implement a function to find empty folders
 - [X] Add tool to sort away likely ebooks (PDF)
 - [X] Add setting to exclude file types
 - [X] Add CLI option for custom {sorted_folder}

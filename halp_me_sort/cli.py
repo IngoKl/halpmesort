@@ -5,6 +5,7 @@ import pkg_resources
 
 from halp_me_sort.config import config
 from halp_me_sort.halp_deduplicate import HalpDeduplicate
+from halp_me_sort.halp_folders import HalpEmptyFolders
 from halp_me_sort.halp_sort import HalpSort
 from halp_me_sort.halp_sort_ebooks import HalpSortPdfEbooks
 
@@ -65,9 +66,20 @@ def find_duplicates(folder_to_deduplicate):
     halp.deduplicate_files()
 
 
+@click.command()
+@click.argument('folder_to_check', type=click.Path(exists=True))
+def find_empty_folders(folder_to_check):
+    """Recursively finds empty folders."""
+    click.echo('Finding empty folders.')
+
+    halp = HalpEmptyFolders(config=config, folder_to_check=folder_to_check)
+    halp.find_empty_folders()
+
+
 cli.add_command(sort)
 cli.add_command(find_duplicates)
 cli.add_command(sort_ebooks)
+cli.add_command(find_empty_folders)
 
 
 if __name__ == "__main__":
