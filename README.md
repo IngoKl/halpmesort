@@ -20,12 +20,13 @@ Please note that this tool is *definitely not production ready* at all. I am sha
 
 Once installed, you can run `halp-me-sort`.
 
-*Halp Me Sort* currently has three features:
+*Halp Me Sort* currently has five features:
 
 1. Sorting files according to their file extension. You will need to supply a folder to sort as well as, for security reasons, explicitly disable "dry mode": `halp-me-sort sort . False`. This will move all files in `.` to subfolders in `sorted_folder` (`config.py`). For example, `./test.pdf` will be moved to `{sorted_folder}/pdf/test.pdf`.
 1. Finding duplicates in a given folder. Run `halp-me-sort find-duplicates .` to move all duplicates in `.` to a duplicates folder.
 1. Finding likely ebooks (based on the number of pages) and sorting them away. This can be used to approach a larger folder of PDFs. The tool also takes into account a naming convention for ebooks. Run `halp-me-sort sort-ebooks . False` to sort likely ebooks into separate folders based on their page count and the naming convention.
 1. Finding empty folders recursively. Run `halp-me-sort find-empty-folders .` to find all empty folders in `.`.
+1. Finding and removing unwanted files recusively (currently `*.tmp` and `*.~$.doc`, `*.~§.docx`). Run `halp-me-sort remove-unwanted-files . True` to find and remove all unwanted files in `.`.
 
 ## Development
 
@@ -45,6 +46,7 @@ Currently, the most essential task is to implement better configuration manageme
 - [ ] Add tests
 - [ ] Add sensible configuration management
 - [ ] Add CLI option to overwrite the configuration
+- [ ] Use Click to handle the `bool` type of `dry_run`
 - [X] Implement a function to find empty folders
 - [X] Add tool to sort away likely ebooks (PDF)
 - [X] Add setting to exclude file types

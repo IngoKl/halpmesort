@@ -1,6 +1,6 @@
 # Default Configuration
 config = {
-    'sorted_folder': 'G:\Sorted',
+    'sorted_folder': 'G:\\Sorted',
     'duplicate_folder': '#duplicates',
     'excluded_filetypes': [
         '.backup',
@@ -17,4 +17,9 @@ config = {
     'ebook_folder_bad_nc': './likely_ebooks/bad_naming_convention',
     'ebook_page_threshold': 60,
     'ebook_naming_convention': r'[A-Z]{1}.*? [0-9]{4} - .*',
+    'unwanted_files': [
+        r'.*\.tmp',
+        r'~\$.*\.doc$',
+        r'~\$.*\.docx$',
+    ],
 }
