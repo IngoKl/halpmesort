@@ -1,6 +1,6 @@
 # Default Configuration
 config = {
-    'sorted_folder': 'G:\\Sorted',
+    'sorted_folder': 'E:\\Sorted',
     'duplicate_folder': '#duplicates',
     'excluded_filetypes': [
         '.backup',

@@ -6,7 +6,7 @@ import click
 from halp_me_sort.config import config
 from halp_me_sort.halp_deduplicate import HalpDeduplicate
 from halp_me_sort.halp_folders import HalpEmptyFolders
-from halp_me_sort.halp_sort import HalpSort
+from halp_me_sort.halp_sort import HalpSort, HalpSortYears
 from halp_me_sort.halp_sort_ebooks import HalpSortPdfEbooks
 from halp_me_sort.halp_unwanted_files import HalpUnwantedFiles
 
@@ -38,6 +38,26 @@ def sort(folder_to_sort, dry_run, sorted_folder):
     )
     halp.sort_files()
     halp.print_duplicates()
+
+
+@click.command()
+@click.argument('folder_to_sort', type=click.Path(exists=True))
+@click.argument('dry_run')
+@click.option('--sorted_folder', help='Folder to sort files into.')
+def sort_years(folder_to_sort, dry_run, sorted_folder):
+    """Sort the files in folder_to_sort according their year."""
+    click.echo('Sorting the folder by years.')
+    dry_run = True if dry_run == 'True' else False
+
+    click.echo(f'Sorting {folder_to_sort} (Dry Run: {dry_run})')
+
+    halp = HalpSortYears(
+        config=config,
+        folder_to_sort=folder_to_sort,
+        sorted_folder=sorted_folder,
+        dry_run=dry_run,
+    )
+    halp.sort_files()
 
 
 @click.command()
@@ -95,6 +115,7 @@ def remove_unwanted_files(folder_to_check, dry_run):
 
 
 cli.add_command(sort)
+cli.add_command(sort_years)
 cli.add_command(find_duplicates)
 cli.add_command(sort_ebooks)
 cli.add_command(find_empty_folders)

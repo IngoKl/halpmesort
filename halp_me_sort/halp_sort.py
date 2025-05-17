@@ -2,6 +2,7 @@ import shutil
 from pathlib import Path
 
 from halp_me_sort.halpers import hash_file
+from datetime import datetime
 
 
 class HalpSort:
@@ -84,3 +85,38 @@ class HalpSort:
                 print(f' Duplicate {i}')
                 for file in duplicate:
                     print(f'  {file}')
+
+class HalpSortYears:
+    def __init__(self, config, folder_to_sort, dry_run=True, sorted_folder=False):
+        self.config = config
+
+        self.dry_run = dry_run
+
+        # This should be changed to an approach that allows for all configuration settings to be overwritten
+        if sorted_folder:
+            self.sorted_folder = Path(sorted_folder)
+        else:
+            self.sorted_folder = Path(config['sorted_folder'])
+
+        if not self.dry_run:
+            self.sorted_folder.mkdir(exist_ok=True)
+
+        self.folder_to_sort = Path(folder_to_sort)
+
+    def sort_files(self):
+        artifacts = list(self.folder_to_sort.glob('*'))
+
+        files = [artifact for artifact in artifacts if artifact.is_file()]
+
+        # For each file, get the modification date and move it to a folder named after the year.
+        for file in files:
+            year = file.stat().st_mtime
+            year = datetime.fromtimestamp(int(year)).year
+
+            folder = Path(self.sorted_folder, str(year))
+
+            print(f'Moving {file} to {folder}')
+            if not self.dry_run:
+                folder.mkdir(exist_ok=True)
+                shutil.move(file, Path(folder, file.name))
+
