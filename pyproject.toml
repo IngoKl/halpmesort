@@ -15,7 +15,7 @@ importlib-metadata = "^8.4.0"
 halp-me-sort = "halp_me_sort.cli:cli"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.9.1"
+black = "^26.3.1"
 isort = "^5.12.0"
 
 [tool.black]
